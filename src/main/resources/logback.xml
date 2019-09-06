@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration scan="true">
-    <!-- Avoid logger spam from web socket -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{HH:mm:ss}] [%level] %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <logger name="org.eclipse.jetty" level="OFF"/>
-    <!-- Configure Discord4J logger level -->
     <logger name="sx.blah.discord.Discord4J" level="OFF"/>
+    <logger name="ch.qos.logback.*" level="OFF"/>
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
 </configuration>
